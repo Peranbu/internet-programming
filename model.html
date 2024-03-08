@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online voting System</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color:#f0f0f0;
+            margin:0;
+            padding:0;
+        }
+        .container{
+            width:80%;
+            margin:0 auto;
+        }
+        header{
+            background-color:#333;
+            color:white;
+            padding:10px 0;
+            text-align:center;
+        }
+        footer{
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .form-container{
+            display: flex;
+            justify-content: space-between;
+        }
+        .form-container form{
+            width: 45%;
+        }
+        .box{
+            width:30%;
+            height:250px; 
+            background-color:white;
+            border:1px solid #ddd;
+            border-radius:5px;
+            padding:20px;
+            margin:20px 0;
+        }
+        input[type="submit"]{
+            background-color:rgb(151,151,243);
+            color:white;
+            border:none;
+            padding:10px 20px;
+            cursor:pointer;
+        }
+        input[type="submit"]:hover{
+            background-color:rgb(146,146,238);
+        }
+    </style>
+    <script>
+        function storeFormData() {
+            var voter = document.getElementById('voter').value;
+            var loginver = document.getElementById('loginver').value;
+            var OTP = document.getElementById('OTP').value;
+            var Candidate = document.getElementById('Candidate').value;
+            sessionStorage.setItem("Voter ID: " + voter + ", Login Verification: " + loginver + ", OTP: " + OTP + ", Candidate: " + Candidate);
+            window.location.href = "results.html";
+            var election=document.getElementById('election').value;
+            var electionward=document.getElementById('electionward').value;
+            var voterlist=document.getElementById('voterlist').value;
+            var voterli=document.getElementById('voterli').value;
+            sessionStorage.setItem("election candidate name" + election +", election ward"+electionward +",create voterlist"+voterlist +" import voter list"+voterli);
+            window.location.href = "results.html";
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Online voting system</h1>
+    </header>
+    <div class="container">
+        <div class="form-container">
+            <div class="box">
+                <form onsubmit="event.preventDefault(); storeFormData();">
+                    <label for="voter">Voter id</label><br>
+                    <input type="text"id="voter"name="voter"><br><br>
+                    <label for="loginver">Login Verification</label><br>
+                    <input type="text" id="loginver" name="loginver"><br><br>
+                    <label for="OTP">otp for voting</label><br>
+                    <input type="number" id="OTP" name="OTP"><br><br>
+                    <label for="Candidate">Select candidate</label><br>
+                    <input type="text" id="Candidate" name="Candidate"><br><br>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+            <div class="box">
+                <form action="submit_details" method="post">
+                    <form onsubmit="event.preventDefault(); printFormData();">
+                    <label for="election"> election candidate name</label><br>
+                    <input type="text"id="election"name="election"><br><br>
+                    <label for="electionward"> election Ward</label><br>
+                    <input type="number"id="electionward"name="electionward"><br><br>
+                    <label for="voterlist"> Create Voter List</label><br>
+                    <input type="text"id="voterlist"name="voterlist"><br><br>
+                    <label for="voterli">import Voter List</label><br>
+                    <input type="text"id="voterli"name="voterli"><br><br>
+                    <input type="submit" value="Get Results">
+                </form>
+            </form>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Online voting system.All rights reserved</p>
+    </footer>
+</body>
+</html>
