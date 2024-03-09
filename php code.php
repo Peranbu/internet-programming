@@ -28,3 +28,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $conn->close();
 ?>
+
+
+    <script>
+        function printFormData() {
+            var voter = document.getElementById('voter').value;
+            var loginver = document.getElementById('loginver').value;
+            var OTP = document.getElementById('OTP').value;
+            var Candidate = document.getElementById('Candidate').value;
+            alert("Voter ID: " + voter + ", Login Verification: " + loginver + ", OTP: " + OTP + ", Candidate: " + Candidate);
+        }
+    </script>
